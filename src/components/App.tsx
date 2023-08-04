@@ -16,7 +16,7 @@ const App = () => {
                     </Text>
                     <Image src={"./images/EthLogo.svg"} alt={"Cover Image"} objectFit="contain" boxSize={"200px"} borderRadius={"100%"} my={4} />
                     <Text fontWeight={"bold"} fontSize={"1xl"} pt={2} px={5} textAlign={"center"}>
-                        Let's start building something awesome!
+                        Let&apos;s start building something awesome!
                     </Text>
                     <Box height={50} />
                 </Flex>
