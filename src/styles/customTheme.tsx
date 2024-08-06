@@ -3,11 +3,11 @@ import type { StyleFunctionProps } from "@chakra-ui/styled-system"
 import { cssVar } from "@chakra-ui/theme-tools"
 import { lighten, darken } from "polished"
 
-function lightenColor(colorMode, mainColor, value) {
-    return colorMode === "dark" ? lighten(value, mainColor) : darken(value, mainColor)
+function lightenColor(mainColor, value) {
+    return lighten(value, mainColor)
 }
-function darkenColor(colorMode, mainColor, value) {
-    return colorMode === "dark" ? darken(value, mainColor) : lighten(value, mainColor)
+function darkenColor(mainColor, value) {
+    return darken(value, mainColor)
 }
 
 const customTheme = extendTheme({
@@ -39,21 +39,18 @@ const customTheme = extendTheme({
         Button: {
             variants: {
                 HeaderButton: (props: StyleFunctionProps) => ({
-                    bg:
-                        props.colorMode === "dark"
-                            ? lightenColor(props.colorMode, props.theme.colors.pageBackground.dark, 0.1)
-                            : "pageBackground.light",
+                    bg: props.colorMode === "dark" ? lightenColor(props.theme.colors.pageBackground.dark, 0.1) : "contentBackground.light",
                     _hover: {
                         bg:
                             props.colorMode === "dark"
-                                ? lightenColor(props.colorMode, props.theme.colors.pageBackground.dark, 0.2)
-                                : "pageBackgroundHover.light",
+                                ? lightenColor(props.theme.colors.pageBackground.dark, 0.2)
+                                : darkenColor(props.theme.colors.contentBackground.light, 0.15),
                     },
                     _active: {
                         bg:
                             props.colorMode === "dark"
-                                ? lightenColor(props.colorMode, props.theme.colors.pageBackground.dark, 0.3)
-                                : "pageBackground.light",
+                                ? lightenColor(props.theme.colors.pageBackground.dark, 0.3)
+                                : darkenColor(props.theme.colors.contentBackground.light, 0.2),
                     },
                 }),
             },
