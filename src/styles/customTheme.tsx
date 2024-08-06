@@ -25,6 +25,18 @@ const customTheme = extendTheme({
                 // borderColor: darkenColor(props.colorMode, props.theme.colors.border.dark, 0.05),
             }),
         },
+        Drawer: {
+            variants: {
+                solid: (props) => ({
+                    dialog: {
+                        bg: props.colorMode === "dark" ? "pageBackground.dark" : "pageBackground.light",
+                    },
+                }),
+            },
+            defaultProps: {
+                variant: "solid",
+            },
+        },
     },
     colors: {
         pageBackground: {
