@@ -22,7 +22,6 @@ const customTheme = extendTheme({
         Code: {
             baseStyle: (props: StyleFunctionProps) => ({
                 bg: props.colorMode === "dark" ? "pageBackgroundHover.dark" : "contentBackground.light",
-                // borderColor: darkenColor(props.colorMode, props.theme.colors.border.dark, 0.05),
             }),
         },
         Drawer: {
@@ -35,6 +34,28 @@ const customTheme = extendTheme({
             },
             defaultProps: {
                 variant: "solid",
+            },
+        },
+        Button: {
+            variants: {
+                HeaderButton: (props: StyleFunctionProps) => ({
+                    bg:
+                        props.colorMode === "dark"
+                            ? lightenColor(props.colorMode, props.theme.colors.pageBackground.dark, 0.1)
+                            : "pageBackground.light",
+                    _hover: {
+                        bg:
+                            props.colorMode === "dark"
+                                ? lightenColor(props.colorMode, props.theme.colors.pageBackground.dark, 0.2)
+                                : "pageBackgroundHover.light",
+                    },
+                    _active: {
+                        bg:
+                            props.colorMode === "dark"
+                                ? lightenColor(props.colorMode, props.theme.colors.pageBackground.dark, 0.3)
+                                : "pageBackground.light",
+                    },
+                }),
             },
         },
     },

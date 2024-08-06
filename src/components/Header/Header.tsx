@@ -17,8 +17,7 @@ import {
 } from "@chakra-ui/react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons"
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons"
-import { HamburgerIcon } from "@chakra-ui/icons"
+import { faSun, faMoon, faBars } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
 
 function HeaderButtons({ displayZone }) {
@@ -32,18 +31,18 @@ function HeaderButtons({ displayZone }) {
                 </Text>
             )}
             <Link href={"https://x.com/EridianAlpha"} target="_blank">
-                <Button aria-label={"View X.com"} borderRadius={"full"} p={2}>
+                <Button variant={"HeaderButton"} aria-label={"View X.com"} borderRadius={"full"} p={2}>
                     <HStack gap={3}>
                         <FontAwesomeIcon icon={faXTwitter} size={"xl"} />
-                        {displayZone == "drawer" && <Text>x.com</Text>}
+                        {displayZone == "drawer" && <Text pr={1}>x.com</Text>}
                     </HStack>
                 </Button>
             </Link>
             <Link href={"https://github.com/EridianAlpha"} target="_blank">
-                <Button aria-label={"View GitHub Source"} borderRadius={"full"} p={2}>
+                <Button variant={"HeaderButton"} aria-label={"View GitHub Source"} borderRadius={"full"} p={2}>
                     <HStack gap={3}>
                         <FontAwesomeIcon icon={faGithub} size={"xl"} />
-                        {displayZone == "drawer" && <Text>GitHub</Text>}
+                        {displayZone == "drawer" && <Text pr={1}>GitHub</Text>}
                     </HStack>
                 </Button>
             </Link>
@@ -54,6 +53,7 @@ function HeaderButtons({ displayZone }) {
                 </Text>
             )}
             <Button
+                variant={"HeaderButton"}
                 px={2}
                 aria-label="Toggle Color Mode"
                 onClick={() => {
@@ -63,7 +63,7 @@ function HeaderButtons({ displayZone }) {
             >
                 <HStack gap={3}>
                     {colorMode === "light" ? <FontAwesomeIcon icon={faMoon} size={"xl"} /> : <FontAwesomeIcon icon={faSun} size={"xl"} />}
-                    {displayZone == "drawer" && <Text>Toggle color mode</Text>}
+                    {displayZone == "drawer" && <Text pr={1}>Toggle color mode</Text>}
                 </HStack>
             </Button>
         </>
@@ -95,13 +95,16 @@ export default function Header({}) {
                         <HStack display={{ base: "none", sm: "flex" }} spacing={5}>
                             <HeaderButtons displayZone={"header"} />
                         </HStack>
-                        <IconButton
-                            size="md"
-                            icon={<HamburgerIcon />}
+                        <Button
+                            variant={"HeaderButton"}
                             aria-label="Open Menu"
                             display={{ base: "flex", sm: "none" }}
                             onClick={onOpen}
-                        />
+                            borderRadius={"full"}
+                            p={0}
+                        >
+                            <FontAwesomeIcon icon={faBars} size={"lg"} />
+                        </Button>
                     </HStack>
                 </Box>
             </Box>
