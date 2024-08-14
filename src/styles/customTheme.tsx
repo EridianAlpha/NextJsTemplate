@@ -16,6 +16,27 @@ const customTheme = extendTheme({
             ".bgPage": {
                 bg: props.colorMode === "dark" ? "pageBackground.dark" : "pageBackground.light",
             },
+            ".tooltip": {
+                bg:
+                    props.colorMode === "dark"
+                        ? `${lightenColor(props.theme.colors.pageBackground.dark, 0.1)} !important`
+                        : `${darkenColor(props.theme.colors.pageBackground.light, 0.05)} !important`,
+                [cssVar("popper-arrow-bg").variable]:
+                    props.colorMode === "dark"
+                        ? `${lightenColor(props.theme.colors.pageBackground.dark, 0.1)} !important`
+                        : `${darkenColor(props.theme.colors.pageBackground.light, 0.05)} !important`,
+            },
+            ".tooltipLabel": {
+                paddingX: "10px",
+                paddingY: "5px",
+                borderRadius: "7px",
+                color: "var(--chakra-colors-chakra-body-text)",
+            },
+            // Increase the tooltip arrow size
+            "div .chakra-tooltip__arrow": {
+                width: "130% !important",
+                height: "130% !important",
+            },
         }),
     },
     components: {

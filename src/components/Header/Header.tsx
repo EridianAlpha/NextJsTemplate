@@ -4,12 +4,11 @@ import {
     HStack,
     VStack,
     Image,
-    IconButton,
+    Tooltip,
     Button,
     useDisclosure,
     Drawer,
     DrawerBody,
-    DrawerHeader,
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
@@ -22,6 +21,29 @@ import Link from "next/link"
 
 function HeaderButtons({ displayZone }) {
     const { colorMode, toggleColorMode } = useColorMode()
+
+    const CustomButtonTooltip = ({ labelText, children }) => {
+        return (
+            <Tooltip
+                className="tooltip"
+                closeOnClick={false}
+                gutter={8}
+                label={
+                    <VStack className="tooltipLabel">
+                        <Text fontWeight={"bold"}>{labelText}</Text>
+                    </VStack>
+                }
+                placement={"bottom"}
+                borderRadius={"full"}
+                hasArrow={true}
+                closeDelay={0}
+                openDelay={0}
+                isDisabled={displayZone === "drawer"}
+            >
+                {children}
+            </Tooltip>
+        )
+    }
 
     return (
         <>
@@ -52,20 +74,14 @@ function HeaderButtons({ displayZone }) {
                     Settings
                 </Text>
             )}
-            <Button
-                variant={"HeaderButton"}
-                px={2}
-                aria-label="Toggle Color Mode"
-                onClick={() => {
-                    toggleColorMode()
-                }}
-                borderRadius={"full"}
-            >
-                <HStack gap={3}>
-                    {colorMode === "light" ? <FontAwesomeIcon icon={faMoon} size={"xl"} /> : <FontAwesomeIcon icon={faSun} size={"xl"} />}
-                    {displayZone == "drawer" && <Text pr={1}>Toggle color mode</Text>}
-                </HStack>
-            </Button>
+            <CustomButtonTooltip labelText="Toggle color theme">
+                <Button variant={"HeaderButton"} px={2} aria-label="Toggle color theme" onClick={toggleColorMode} borderRadius={"full"}>
+                    <HStack gap={3}>
+                        {colorMode === "light" ? <FontAwesomeIcon icon={faMoon} size={"xl"} /> : <FontAwesomeIcon icon={faSun} size={"xl"} />}
+                        {displayZone == "drawer" && <Text pr={1}>Toggle color theme</Text>}
+                    </HStack>
+                </Button>
+            </CustomButtonTooltip>
         </>
     )
 }
