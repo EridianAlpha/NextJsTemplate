@@ -1,6 +1,6 @@
-# Next.js Template Project
+# ChakraUI V2 & Next.js Template
 
-This is a template for Next.js projects.
+This is a template for ChakraUI V2 & Next.js projects.
 
 ## Installation
 
