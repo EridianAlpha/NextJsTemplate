@@ -12,7 +12,7 @@ const App = () => {
                 <Flex direction={"column"} alignItems={"center"} maxW={"100vw"} w={"1150px"} px={{ base: "0px", sm: "2vw", xl: "3vw", "2xl": "3vw" }}>
                     <Box height={30} />
                     <Text fontWeight={"extrabold"} fontSize={"3xl"} textAlign={"center"}>
-                        Next.js Template Project
+                        ChakraUI V2 & Next.js Template
                     </Text>
                     <Image src={"./images/EthLogo.svg"} alt={"Cover Image"} objectFit="contain" boxSize={"200px"} borderRadius={"100%"} my={4} />
                     <Text fontWeight={"bold"} fontSize={"1xl"} pt={2} px={5} textAlign={"center"}>
