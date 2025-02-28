@@ -1,6 +1,6 @@
 {
-  "name": "chakra-ui-v3-template",
-  "version": "0.1.0",
+  "name": "chakra-ui-v2-template",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
